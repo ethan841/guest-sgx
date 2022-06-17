@@ -11,6 +11,7 @@
  */
 
 #define DEBUG		/* Enable initcall_debug */
+#include "benchmark.h"
 
 #include <linux/types.h>
 #include <linux/extable.h>
@@ -552,6 +553,8 @@ asmlinkage __visible void __init start_kernel(void)
 {
 	char *command_line;
 	char *after_dashes;
+
+	outb(LINUX_START_KERNEL, LINUX_EXIT_PORT);
 
 	set_task_stack_end_magic(&init_task);
 	smp_setup_processor_id();
@@ -1101,6 +1104,8 @@ static int __ref kernel_init(void *unused)
 	numa_default_policy();
 
 	rcu_end_inkernel_boot();
+
+	outb(LINUX_START_USER, LINUX_EXIT_PORT);
 
 	if (ramdisk_execute_command) {
 		ret = run_init_process(ramdisk_execute_command);
