@@ -118,7 +118,7 @@ nouveau_name(struct drm_device *dev)
 		return nouveau_platform_name(to_platform_device(dev->dev));
 }
 
-int nouvea_device_count = 0; /* Gdev */
+int nouveau_device_count = 0; /* Gdev */
 struct drm_device **nouveau_drm_device = NULL; /* Gdev */
 
 static inline bool

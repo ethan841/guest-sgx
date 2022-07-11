@@ -192,7 +192,7 @@ int gdev_drv_bo_alloc(struct drm_device *drm, uint64_t size, uint32_t drv_flags,
     int ret;
 
     // ?? dma_resv -> not in nouveau
-    struct dma_resv *resv;
+    struct reservation_object *resv;
 
     /* ?? need check
     if (chan)
